@@ -24,8 +24,8 @@ git clone --depth 1 "https://github.com/zsh-users/zsh-syntax-highlighting.git" \
 git clone --depth 1 "https://github.com/zsh-users/zsh-completions" \
   ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
 
-cp "$BASE_DIR/p10k.zsh" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/p10k.zsh"
-mv ~/.zshrc ~/.zshrc.old
+cp "$BASE_DIR/p10k.zsh" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/.p10k.zsh"
+mv ~/.zshrc ~/.zshrc.vscode_version
 cp "$BASE_DIR/zshrc" ~/.zshrc
 
 if grep -q DOTFILES_FOLDER ~/.bashrc; then
