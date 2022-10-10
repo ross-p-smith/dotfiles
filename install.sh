@@ -3,7 +3,7 @@
 #
 # This script installs dependencies
 # It is intended to be run to set up the dotfiles
-# And adds to .bashrc to source the load.sh script 
+# And adds to .zshrc to source the load.sh script 
 #
 
 BASE_DIR=$(dirname "$0")
@@ -14,6 +14,19 @@ echo "dotfiles/install.sh - starting... (DEV_CONTAINER=$DEV_CONTAINER)"
 # Install a custom theme.
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+
+git clone --depth 1 "https://github.com/zsh-users/zsh-autosuggestions.git" \
+    ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+git clone --depth 1 "https://github.com/zsh-users/zsh-syntax-highlighting.git" \
+    ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+git clone --depth 1 "https://github.com/zsh-users/zsh-completions" \
+  ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+
+cp "$BASE_DIR/p10k.zsh" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/p10k.zsh"
+mv ~/.zshrc ~/.zshrc.old
+cp "$BASE_DIR/zshrc" ~/.zshrc
 
 if grep -q DOTFILES_FOLDER ~/.bashrc; then
     echo "dotfiles loader already in .bashrc - skipping"
