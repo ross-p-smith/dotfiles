@@ -1,0 +1,15 @@
+[user]
+	email = rosmith@microsoft.com
+	name = ross-p-smith
+[credential "https://github.com"]
+	helper = !gh auth git-credential
+[core]
+	editor = code --wait
+[diff]
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[init]
+	defaultBranch = main
+[safe]
+	directory = *
