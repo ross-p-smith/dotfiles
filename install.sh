@@ -16,7 +16,8 @@ pull_from_git_repo() {
     local dir=$2
     if [[ -d $dir ]]; then
         echo -e "\e[38;5;33mPulling $repo\e[0m"
-        git -C $dir pull
+        cd $dir
+        git pull
     else
         echo -e "\e[38;5;33mCloning $repo\e[0m"
         git clone --depth 1 $repo $dir
@@ -47,7 +48,14 @@ else
     echo -e "# DOTFILES_END\n" >> ~/.bashrc
 fi
 
-if grep -q DOTFILES_FOLDER ~/.bash_aliases; then
+# if .bash_aliases file doesn't exist or is empty, create it
+if [[ ! -s ~/.bash_aliases ]]; then
+    echo -e "\e[38;5;33m.bash_aliases doesn't exist or is empty - creating it...\e[0m"
+    touch ~/.bash_aliases
+fi
+
+
+if [[ -f ~/.bash_aliases ] && [ grep -q DOTFILES_FOLDER ~/.bash_aliases ]]; then
     echo -e "\e[38;5;33mdotfiles aliases already in .bash_aliases - skipping\e[0m"
 else
     echo -e "\e[38;5;33mAdding dotfiles aliases to .bash_aliases...\e[0m"
