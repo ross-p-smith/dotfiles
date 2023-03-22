@@ -9,7 +9,7 @@
 BASE_DIR=$(dirname "$0")
 BASE_DIR=$(cd $BASE_DIR; pwd)
 
-echo -e "\e[38mdotfiles/install.sh - starting...     \e[38;5;40m(DEV_CONTAINER=$DEV_CONTAINER)\e[0m\n"
+echo -e "\e[38;5;33mdotfiles/install.sh - starting...     \e[38;5;40m(DEV_CONTAINER=$DEV_CONTAINER)\e[0m\n"
 
 pull_from_git_repo() {
     local repo=$1
@@ -35,9 +35,9 @@ cp "$BASE_DIR/zshrc" ~/.zshrc
 
 # Add the dotfiles loader to .bashrc
 if grep -q DOTFILES_FOLDER ~/.bashrc; then
-    echo -e "\e[38mdotfiles loader already in .bashrc - skipping\e[0m"
+    echo -e "\e[38;5;33mdotfiles loader already in .bashrc - skipping\e[0m"
 else
-    echo -e "\e[38mAdding dotfiles loader to .bashrc...\e[0m"
+    echo -e "\e[38;5;33mAdding dotfiles loader to .bashrc...\e[0m"
     echo -e "# DOTFILES_START" >> ~/.bashrc
     echo -e "DOTFILES_FOLDER=\"$BASE_DIR\"" >> ~/.bashrc
     if [[ -n $DEV_CONTAINER ]]; then
@@ -48,12 +48,12 @@ else
 fi
 
 if grep -q DOTFILES_FOLDER ~/.bash_aliases; then
-    echo -e "\e[38mdotfiles aliases already in .bash_aliases - skipping\e[0m"
+    echo -e "\e[38;5;33mdotfiles aliases already in .bash_aliases - skipping\e[0m"
 else
-    echo -e "\e[38mAdding dotfiles aliases to .bash_aliases...\e[0m"
+    echo -e "\e[38;5;33mAdding dotfiles aliases to .bash_aliases...\e[0m"
     echo -e "# DOTFILES_START" >> ~/.bash_aliases
     cat $BASE_DIR/.bash_aliases >> ~/.bash_aliases
     echo -e "# DOTFILES_END\n" >> ~/.bash_aliases
 fi
 
-echo -e "\e[38mdotfiles/install.sh - done.\e[0m\n"
+echo -e "\e[38;5;33mdotfiles/install.sh - done.\e[0m\n"
