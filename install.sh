@@ -15,7 +15,7 @@ pull_from_git_repo() {
     local repo=$1
     local dir=$2
     if [[ -d $dir ]]; then
-        echo -e "\e[38;5;33mPulling $repo\e[0m"
+        echo -e "\e[38;5;33mPulling $repo into $dir \e[0m"
         cd $dir
         git pull
     else
@@ -49,7 +49,7 @@ else
 fi
 
 # Add aliases
-if [[ -f ~/.bash_aliases ]] && [[ grep -q DOTFILES_FOLDER ~/.bash_aliases ]]; then
+if grep -q DOTFILES_FOLDER ~/.bash_aliases; then
     echo -e "\e[38;5;33mdotfiles aliases already in .bash_aliases - skipping\e[0m"
 else
     echo -e "\e[38;5;33mAdding dotfiles aliases to .bash_aliases...\e[0m"
