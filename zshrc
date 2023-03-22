@@ -23,5 +23,3 @@ fi
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Always start docker if it's not running
-if [[ ! -f /var/run/docker.pid ]]; then { echo "🐳 Starting Docker..."; start-docker; }; fi
