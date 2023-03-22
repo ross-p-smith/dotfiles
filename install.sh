@@ -9,7 +9,7 @@
 BASE_DIR=$(dirname "$0")
 BASE_DIR=$(cd $BASE_DIR; pwd)
 
-echo "dotfiles/install.sh - starting... (DEV_CONTAINER=$DEV_CONTAINER)"
+echo -e "\e[38;5;33mdotfiles/install.sh - starting...     \e[38;5;40m(DEV_CONTAINER=$DEV_CONTAINER)\n"
 
 # Install a custom theme.
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
@@ -41,4 +41,4 @@ else
     echo -e "# DOTFILES_END\n" >> ~/.bashrc
 fi
 
-echo "dotfiles/install.sh - done."
+echo -e "\e[38;5;33mdotfiles/install.sh - done.\e[38;5;40m\n"
