@@ -25,10 +25,10 @@ pull_from_git_repo() {
 }
 
 # Install a custom theme.
-pull_from_git_repo "https://github.com/romkatv/powerlevel10k.git" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k"
-pull_from_git_repo "https://github.com/zsh-users/zsh-autosuggestions.git" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-pull_from_git_repo "https://github.com/zsh-users/zsh-syntax-highlighting.git" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
-pull_from_git_repo "https://github.com/zsh-users/zsh-completions" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions"
+pull_from_git_repo "https://github.com/romkatv/powerlevel10k.git" "${ZSH_CUSTOM:-"$HOME"/.oh-my-zsh/custom}/themes/powerlevel10k"
+pull_from_git_repo "https://github.com/zsh-users/zsh-autosuggestions.git" "${ZSH_CUSTOM:-"$HOME"/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+pull_from_git_repo "https://github.com/zsh-users/zsh-syntax-highlighting.git" "${ZSH_CUSTOM:-"$HOME"/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+pull_from_git_repo "https://github.com/zsh-users/zsh-completions" "${ZSH_CUSTOM:-"$HOME"/.oh-my-zsh/custom}/plugins/zsh-completions"
 
 cp "$BASE_DIR/p10k.zsh" ~/.p10k.zsh
 mv ~/.zshrc ~/.zshrc.vscode_version
