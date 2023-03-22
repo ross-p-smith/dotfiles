@@ -49,7 +49,7 @@ else
 fi
 
 # Add aliases
-if grep -q DOTFILES_FOLDER ~/.bash_aliases; then
+if grep -q DOTFILES_START ~/.bash_aliases; then
     echo -e "\e[38;5;33mdotfiles aliases already in .bash_aliases - skipping\e[0m"
 else
     echo -e "\e[38;5;33mAdding dotfiles aliases to .bash_aliases...\e[0m"
