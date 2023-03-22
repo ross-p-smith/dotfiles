@@ -48,14 +48,8 @@ else
     echo -e "# DOTFILES_END\n" >> ~/.bashrc
 fi
 
-# if .bash_aliases file doesn't exist or is empty, create it
-if [[ ! -s ~/.bash_aliases ]]; then
-    echo -e "\e[38;5;33m.bash_aliases doesn't exist or is empty - creating it...\e[0m"
-    touch ~/.bash_aliases
-fi
-
-
-if [[ -f ~/.bash_aliases ] && [ grep -q DOTFILES_FOLDER ~/.bash_aliases ]]; then
+# Add aliases
+if [[ -f ~/.bash_aliases ]] && [[ grep -q DOTFILES_FOLDER ~/.bash_aliases ]]; then
     echo -e "\e[38;5;33mdotfiles aliases already in .bash_aliases - skipping\e[0m"
 else
     echo -e "\e[38;5;33mAdding dotfiles aliases to .bash_aliases...\e[0m"
