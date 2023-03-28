@@ -16,8 +16,7 @@ pull_from_git_repo() {
     local dir=$2
     if [[ -d $dir ]]; then
         echo -e "\e[38;5;33mPulling $repo into $dir \e[0m"
-        cd $dir
-        git pull
+        git -C $dir pull
     else
         echo -e "\e[38;5;33mCloning $repo\e[0m"
         git clone --depth 1 $repo $dir
@@ -32,7 +31,7 @@ pull_from_git_repo "https://github.com/zsh-users/zsh-completions" "${ZSH_CUSTOM:
 
 cp "$BASE_DIR/p10k.zsh" ~/.p10k.zsh
 mv ~/.zshrc ~/.zshrc.vscode_version
-cp "$BASE_DIR/zshrc" ~/.zshrc
+cp "$BASE_DIR/.zshrc" ~/.zshrc
 
 # Add the dotfiles loader to .bashrc
 if grep -q DOTFILES_FOLDER ~/.bashrc; then
@@ -46,6 +45,20 @@ else
     fi
     echo -e "source \"$BASE_DIR/load.sh\"" >> ~/.bashrc
     echo -e "# DOTFILES_END\n" >> ~/.bashrc
+fi
+
+# Add the dotfiles loader to .bashrc
+if grep -q DOTFILES_FOLDER ~/.zshrc; then
+    echo -e "\e[38;5;33mdotfiles loader already in .zshrc - skipping\e[0m"
+else
+    echo -e "\e[38;5;33mAdding dotfiles loader to .zshrc...\e[0m"
+    echo -e "# DOTFILES_START" >> ~/.zshrc
+    echo -e "DOTFILES_FOLDER=\"$BASE_DIR\"" >> ~/.zshrc
+    if [[ -n $DEV_CONTAINER ]]; then
+        echo -e "DEV_CONTAINER=1" >> ~/.zshrc
+    fi
+    echo -e "source \"$BASE_DIR/load.sh\"" >> ~/.zshrc
+    echo -e "# DOTFILES_END\n" >> ~/.zshrc
 fi
 
 # Add aliases
