@@ -9,7 +9,7 @@
 BASE_DIR=$(dirname "$0")
 BASE_DIR=$(cd $BASE_DIR; pwd)
 
-echo -e "\e[38;5;33mdotfiles/install.sh - starting...     \e[38;5;40m(DEV_CONTAINER=$DEV_CONTAINER)\e[0m\n"
+echo -e "\e[38;5;33mdotfiles/install.sh - starting...     \e[38;5;40m(REMOTE_CONTAINERS=$REMOTE_CONTAINERS)\e[0m\n"
 
 pull_from_git_repo() {
     local repo=$1
