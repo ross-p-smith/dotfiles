@@ -33,6 +33,9 @@ cp "$BASE_DIR/p10k.zsh" ~/.p10k.zsh
 mv ~/.zshrc ~/.zshrc.vscode_version
 cp "$BASE_DIR/.zshrc" ~/.zshrc
 
+# Copy the .gitignore file
+cp "$BASE_DIR/.gitignore_global" ~/.gitignore_global
+
 # Add the dotfiles loader to .bashrc
 if grep -q DOTFILES_FOLDER ~/.bashrc; then
     echo -e "\e[38;5;33mdotfiles loader already in .bashrc - skipping\e[0m"

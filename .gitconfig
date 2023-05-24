@@ -9,6 +9,7 @@
 	helper = !/usr/bin/gh auth git-credential
 [core]
 	editor = code --wait
+	excludesfile = "~/.gitignore_global"
 [diff]
     tool = default-difftool
 [difftool "default-difftool"]
