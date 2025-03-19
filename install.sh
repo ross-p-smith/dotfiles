@@ -35,6 +35,7 @@ cp "$BASE_DIR/.zshrc" ~/.zshrc
 
 # Copy the .gitignore file
 cp "$BASE_DIR/.gitignore_global" ~/.gitignore_global
+cp "$BASE_DIR/.gitconfig" ~/.gitconfig
 
 # Add the dotfiles loader to .bashrc
 if grep -q DOTFILES_FOLDER ~/.bashrc; then
@@ -72,6 +73,18 @@ else
     echo -e "# DOTFILES_START" >> ~/.bash_aliases
     cat $BASE_DIR/.bash_aliases >> ~/.bash_aliases
     echo -e "# DOTFILES_END\n" >> ~/.bash_aliases
+fi
+
+# Add profile
+if grep -q DOTFILES_START ~/.profile; then
+    echo -e "\e[38;5;33mdotfiles docker starter already in .profile - skipping\e[0m"
+else
+    echo -e "\e[38;5;33mAdding docker starter to .profile...\e[0m"
+    echo -e "# DOTFILES_START" >> ~/.profile
+    echo -e "if [[ ! -f /var/run/docker.pid ]];" >> ~/.profile
+    echo -e "    then { echo "🐳 Starting Docker..."; start-docker; };" >> ~/.profile
+    echo -e "fi" >> ~/.profile
+    echo -e "# DOTFILES_END\n" >> ~/.profile
 fi
 
 echo -e "\e[38;5;33mdotfiles/install.sh - done.\e[0m\n"
